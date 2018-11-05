@@ -10,32 +10,127 @@
 
 #include <iostream>
 #include <string>
-#include <cmath>
-#include <limits>
+#include <cstring>
 #include "Assignment_6.h"
 
 using namespace std;
 
-void number::getUserInput(){
-
+int number::getUserInput(){
+    isNum = true;
     do
     {
-        cout << "Enter a positive number" << endl;
-        cin >> intInput;
-    } while (intInput < 0 || !isdigit(intInput));
+        isNum = true;
+        cout << "Enter a positive number to convert to hexidecimal and binary" << endl;
+        cin >> userInput;
 
-    cout << "got it" << endl;
+        for(int i=0; i < userInput.length()-1; i++){
+            if (isalpha(userInput[i])){
+                cout << "ERROR: This is not an integer" << endl;
+                isNum = false;
+                cin.clear();
+            }
+        }
+        if (isNum == true){
+            intInput = stoi(userInput);
+            if (intInput < 0){
+                cout << "ERROR: This is not a positive integer" << endl;
+                isNum = false;
+                cin.clear();
+            }
+        }
+    } while (isNum == false);
+    return intInput;
+}
+
+void number::print_it(int userData) {}
+
+void hexidecimal::print_it(int userData) {
+
+    hex = "";
+    placeHolder = "";
+
+    while (userData != 0)
+    {
+        mod = userData%16;
+        userData = userData/16;
+        if (mod <= 9)
+        {
+            placeHolder = to_string(mod);
+            hex.insert(0,placeHolder);
+        }
+        else
+        {
+            hex.insert(0,checkDecValue(mod));
+        }
+    }
+    cout << "Hex = 0x" << hex << endl;
 
 }
 
-void number::print_it() {
-    cout << "number::print" << endl;
+string hexidecimal::checkDecValue(int Value)
+{
+    switch(Value)
+    {
+        case 10 : return "A";
+        case 11 : return "B";
+        case 12 : return "C";
+        case 13 : return "D";
+        case 14 : return "E";
+        case 15 : return "F";
+    }
 }
 
-void hexidecimal::print_it() {
-    cout << "hex::print" << endl;
+void binary::print_it(int userData) {
+
+    quotient = userData/2;
+    mod = userData%2;
+    do
+    {
+        placeHolder = to_string(mod);
+        bin.insert(0,placeHolder);
+        mod = quotient%2;
+        quotient = quotient/2;
+        if (quotient == 0){
+            placeHolder = to_string(mod);
+            bin.insert(0,placeHolder);
+        }
+    } while (quotient != 0);
+    cout << "Binary = " << bin << endl;
 }
 
-void binary::print_it() {
-    cout << "bin::print" << endl;
+myStack::myStack()	// constructor
+{
+	count = 0;	// zero the myStack
+}
+
+myStack::~myStack() {}	// destructor
+
+void myStack::push(const int item)
+{
+    const int MYSTACK_SIZE = 100;
+	if (count < MYSTACK_SIZE)
+	{
+		data[count] = item;
+		++count;
+	}
+	else cout << "Overflow!\n";
+}
+
+int myStack::pop()
+{
+	if (count >0)
+	{
+		--count;
+		return (data[count]);
+	}
+	else
+	{
+		cout << "Underflow!\n";
+		return 0;
+	}
+}
+
+int myStack::getCount() const
+{
+	return count;
 }

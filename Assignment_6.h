@@ -19,35 +19,54 @@ using namespace std;
 class number {
 
     public:
-        void getUserInput();
-        virtual void print_it();
+        int getUserInput();
+        virtual void print_it(int userData);
 
     protected:
         int intInput;
+
+    private:
+        string userInput;
+        bool isNum;
 
 };
 
 class hexidecimal: public number {
 
     public:
-        void print_it();
+        void print_it(int userData);
+        string checkDecValue(int userData);
 
-    protected:
-        int intInput;
+    private:
+        int mod;
+        string hex;
+        string placeHolder;
 
 };
 
 class binary: public number {
 
     public:
-        void print_it();
+        void print_it(int userData);
 
-    protected:
-        int intInput;
-
+    private:
+        int mod;
+        int quotient;
+        string bin;
+        string placeHolder;
 };
 
-
-
+class myStack
+{
+	private:
+		int count;			// number of items in the myStack
+		int data[];
+	public:
+		myStack();
+		~myStack();
+		void push(const int item);	// push an item on the myStack
+		int pop();			// pop item off the myStack
+		int getCount() const;	// return count
+};
 
 #endif

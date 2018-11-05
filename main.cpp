@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+
 #include "Assignment_6.h"
 
 int main () {
@@ -21,9 +22,8 @@ int main () {
     number* hexPtr = &hexObj;
     number* binPtr = &binObj;
 
-    numObj.getUserInput();
-    hexPtr->print_it();
-    binPtr->print_it();
-
+    int numToConvert = numObj.getUserInput();
+    hexPtr->print_it(numToConvert);
+    binPtr->print_it(numToConvert);
 
 }
