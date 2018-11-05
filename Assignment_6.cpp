@@ -10,20 +10,32 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <limits>
 #include "Assignment_6.h"
 
-int main () {
+using namespace std;
 
-    number numObj;
-    hexidecimal hexObj;
-    binary binObj;
+void number::getUserInput(){
 
-    number* hexPtr = &hexObj;
-    number* binPtr = &binObj;
+    do
+    {
+        cout << "Enter a positive number" << endl;
+        cin >> intInput;
+    } while (intInput < 0 || !isdigit(intInput));
 
-    numObj.getUserInput();
-    hexPtr->print_it();
-    binPtr->print_it();
+    cout << "got it" << endl;
 
+}
 
+void number::print_it() {
+    cout << "number::print" << endl;
+}
+
+void hexidecimal::print_it() {
+    cout << "hex::print" << endl;
+}
+
+void binary::print_it() {
+    cout << "bin::print" << endl;
 }
