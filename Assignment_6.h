@@ -20,7 +20,7 @@ class number {
 
     public:
         int getUserInput();
-        virtual void print_it(int userData);
+        virtual void print_it();
 
     protected:
         int intInput;
@@ -34,7 +34,8 @@ class number {
 class hexidecimal: public number {
 
     public:
-        void print_it(int userData);
+        void print_it();
+        void calculateHex(int userData);
         string checkDecValue(int userData);
 
     private:
@@ -47,7 +48,8 @@ class hexidecimal: public number {
 class binary: public number {
 
     public:
-        void print_it(int userData);
+        void print_it();
+        void calculateBin(int userData);
 
     private:
         int mod;

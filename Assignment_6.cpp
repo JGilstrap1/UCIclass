@@ -42,10 +42,9 @@ int number::getUserInput(){
     return intInput;
 }
 
-void number::print_it(int userData) {}
+void number::print_it() {}
 
-void hexidecimal::print_it(int userData) {
-
+void hexidecimal::calculateHex(int userData) {
     hex = "";
     placeHolder = "";
 
@@ -67,6 +66,10 @@ void hexidecimal::print_it(int userData) {
 
 }
 
+void hexidecimal::print_it() {
+    cout << "hex print_it" << endl;
+}
+
 string hexidecimal::checkDecValue(int Value)
 {
     switch(Value)
@@ -80,22 +83,49 @@ string hexidecimal::checkDecValue(int Value)
     }
 }
 
-void binary::print_it(int userData) {
-
+void binary::calculateBin(int userData) {
+    myStack stackObj;
     quotient = userData/2;
     mod = userData%2;
     do
     {
-        placeHolder = to_string(mod);
-        bin.insert(0,placeHolder);
+        stackObj.push(mod);
         mod = quotient%2;
         quotient = quotient/2;
         if (quotient == 0){
-            placeHolder = to_string(mod);
-            bin.insert(0,placeHolder);
+            stackObj.push(mod);
         }
     } while (quotient != 0);
-    cout << "Binary = " << bin << endl;
+    cout << "Binary count = " << stackObj.getCount() << endl;
+
+
+
+
+
+    // quotient = userData/2;
+    // mod = userData%2;
+    // do
+    // {
+    //     placeHolder = to_string(mod);
+    //     bin.insert(0,placeHolder);
+    //     mod = quotient%2;
+    //     quotient = quotient/2;
+    //     if (quotient == 0){
+    //         placeHolder = to_string(mod);
+    //         bin.insert(0,placeHolder);
+    //     }
+    // } while (quotient != 0);
+    // cout << "Binary = " << bin << endl;
+
+}
+
+void binary::print_it() {
+    myStack stackObj;
+    int binBuffer[stackObj.getCount()];
+    for (int i=0; i < stackObj.getCount(); i++){
+        binBuffer[i] = stackObj.pop();
+    }
+    cout << "binBuffer = " << binBuffer << endl;
 }
 
 myStack::myStack()	// constructor
