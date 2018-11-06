@@ -16,48 +16,6 @@ using namespace std;
 #ifndef number_H
 #define number_H
 
-class number {
-
-    public:
-        int getUserInput();
-        virtual void print_it();
-
-    protected:
-        int intInput;
-
-    private:
-        string userInput;
-        bool isNum;
-
-};
-
-class hexidecimal: public number {
-
-    public:
-        void print_it();
-        void calculateHex(int userData);
-        string checkDecValue(int userData);
-
-    private:
-        int mod;
-        string hex;
-        string placeHolder;
-
-};
-
-class binary: public number {
-
-    public:
-        void print_it();
-        void calculateBin(int userData);
-
-    private:
-        int mod;
-        int quotient;
-        string bin;
-        string placeHolder;
-};
-
 class myStack
 {
 	private:
@@ -70,5 +28,45 @@ class myStack
 		int pop();			// pop item off the myStack
 		int getCount() const;	// return count
 };
+
+class number {
+
+    public:
+        int getUserInput();
+        virtual void print_it(int numToConvert, myStack* stackPtr);
+
+    protected:
+        int intInput;
+
+    private:
+        myStack* stackPtr;
+        string userInput;
+        bool isNum;
+
+};
+
+class hexidecimal: public number {
+
+    public:
+        void print_it(int numToConvert, myStack* stackPtr);
+        string checkDecValue(int userData);
+
+    private:
+        int mod;
+
+};
+
+class binary: public number {
+
+    public:
+        void print_it(int numToConvert, myStack* stackPtr);
+
+    private:
+        int binBuffer[100];
+        int mod;
+        int quotient;
+};
+
+
 
 #endif

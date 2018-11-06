@@ -17,14 +17,15 @@ int main () {
     number numObj;
     hexidecimal hexObj;
     binary binObj;
+    myStack stackObj;
 
     number* hexPtr = &hexObj;
     number* binPtr = &binObj;
+    myStack* stackPtr = &stackObj;
 
     int numToConvert = numObj.getUserInput();
-    hexObj.calculateHex(numToConvert);
-    binObj.calculateBin(numToConvert);
-    hexPtr->print_it();
-    binPtr->print_it();
+
+    hexPtr->print_it(numToConvert, stackPtr);
+    binPtr->print_it(numToConvert, stackPtr);
 
 }
