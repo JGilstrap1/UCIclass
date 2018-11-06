@@ -20,16 +20,20 @@ int number::getUserInput(){
     do
     {
         isNum = true;
+        //ask user for input
         cout << "Enter a positive number to convert to hexidecimal and binary" << endl;
         cin >> userInput;
 
+        //double check the input is an integer
         for(int i=0; i < userInput.length()-1; i++){
             if (isalpha(userInput[i])){
                 cout << "ERROR: This is not an integer" << endl;
                 isNum = false;
                 cin.clear();
+                break;
             }
         }
+        //double check the input is a positive integer
         if (isNum == true){
             intInput = stoi(userInput);
             if (intInput < 0){
@@ -42,32 +46,33 @@ int number::getUserInput(){
     return intInput;
 }
 
+//virtual function
 void number::print_it(int numToConvert, myStack* stackPtr) {}
 
-// void hexidecimal::calculateHex(int userData) {
-//     hex = "";
-//     placeHolder = "";
-
-//     while (userData != 0)
-//     {
-//         mod = userData%16;
-//         userData = userData/16;
-//         if (mod <= 9)
-//         {
-//             placeHolder = to_string(mod);
-//             hex.insert(0,placeHolder);
-//         }
-//         else
-//         {
-//             hex.insert(0,checkDecValue(mod));
-//         }
-//     }
-//     cout << "Hex = 0x" << hex << endl;
-
-// }
-
 void hexidecimal::print_it(int numToConvert, myStack* stackPtr) {
-    cout << "hex print_it" << endl;
+
+    //calculate the hexidecimal value from a given decimal value
+    //push onto stack
+    while (numToConvert != 0){
+        mod = numToConvert%16;
+        numToConvert = numToConvert/16;
+        stackPtr->push(mod);
+    }
+
+    //pop the items off the stack and print
+    //check if stack has a value > 9 and assign corresponding letter
+    cout << "Hexidecimal Conversion: 0x";
+    int count = stackPtr->getCount()-1;
+    for (int i=0; i <= count; i++){
+
+        hexBuffer[i] = stackPtr->pop();
+        if (hexBuffer[i] > 9){
+            cout << checkDecValue(hexBuffer[i]);
+        }
+        else{
+            cout << hexBuffer[i];
+        }
+    }
 }
 
 string hexidecimal::checkDecValue(int Value)
@@ -83,27 +88,29 @@ string hexidecimal::checkDecValue(int Value)
     }
 }
 
-
 void binary::print_it(int numToConvert, myStack* stackPtr) {
-    cout << "Binary print_it" << endl;
     quotient = numToConvert/2;
     mod = numToConvert%2;
 
-    do
-    {
+    //calculate the binary value from a given decimal value
+    //push onto stack
+    while (quotient != 0){
         stackPtr->push(mod);
         mod = quotient%2;
         quotient = quotient/2;
 
-    } while (quotient != 0);
+    }
     stackPtr->push(mod);
 
+    //pop the items off the stack and print
+    cout << "Binary Conversion: ";
     int count = stackPtr->getCount()-1;
     for (int i=0; i <= count; i++){
 
         binBuffer[i] = stackPtr->pop();
         cout << binBuffer[i];
     }
+    cout << endl;
 
 }
 

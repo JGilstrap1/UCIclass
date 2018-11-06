@@ -52,7 +52,9 @@ class hexidecimal: public number {
         string checkDecValue(int userData);
 
     private:
+        int hexBuffer[100];
         int mod;
+        string placeHolder;
 
 };
 
@@ -66,7 +68,5 @@ class binary: public number {
         int mod;
         int quotient;
 };
-
-
 
 #endif

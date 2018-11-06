@@ -24,8 +24,7 @@ int main () {
     myStack* stackPtr = &stackObj;
 
     int numToConvert = numObj.getUserInput();
-
-    hexPtr->print_it(numToConvert, stackPtr);
     binPtr->print_it(numToConvert, stackPtr);
+    hexPtr->print_it(numToConvert, stackPtr);
 
 }
