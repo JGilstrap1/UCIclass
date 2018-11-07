@@ -27,6 +27,7 @@ void fraction::setDenominator(){
 
     do
     {
+        //get denominator, check for 0 entry
         cout << "Enter the denominator" << endl;
         cin >> denominator;
         if(denominator == 0){
@@ -47,9 +48,11 @@ fraction fraction::operator+(const fraction& fracObj) {
     int numF2 = fracObj.numerator;
     int denF2 = fracObj.denominator;
 
+    //calculate addition
     addition.numerator = (numF1*denF2) + (denF1*numF2);
     addition.denominator = denF1*denF2;
 
+    //check for negative entries
     if(addition.numerator < 0 && addition.denominator < 0){
         addition.numerator = abs(addition.numerator);
         addition.denominator = abs(addition.denominator);
@@ -70,9 +73,11 @@ fraction fraction::operator-(const fraction& fracObj) {
     int numF2 = fracObj.numerator;
     int denF2 = fracObj.denominator;
 
+    //calculate subtraction
     subtract.numerator = (numF1*denF2) - (denF1*numF2);
     subtract.denominator = denF1*denF2;
 
+    //check for negative entries
     if(subtract.numerator < 0 && subtract.denominator < 0){
         subtract.numerator = abs(subtract.numerator);
         subtract.denominator = abs(subtract.denominator);
@@ -93,9 +98,11 @@ fraction fraction::operator*(const fraction& fracObj) {
     int numF2 = fracObj.numerator;
     int denF2 = fracObj.denominator;
 
+    //calculate product
     multiply.numerator = numF1*numF2;
     multiply.denominator = denF1*denF2;
 
+    //check for negative entries
     if(multiply.numerator < 0 && multiply.denominator < 0){
         multiply.numerator = abs(multiply.numerator);
         multiply.denominator = abs(multiply.denominator);
@@ -116,9 +123,11 @@ fraction fraction::operator/(const fraction& fracObj) {
     int numF2 = fracObj.numerator;
     int denF2 = fracObj.denominator;
 
+    //calculate quotient
     divide.numerator = numF1*denF2;
     divide.denominator = denF1*numF2;
 
+    //check for negative entries
     if(divide.numerator < 0 && divide.denominator < 0){
         divide.numerator = abs(divide.numerator);
         divide.denominator = abs(divide.denominator);
@@ -136,6 +145,7 @@ void operator<<(ostream& os, fraction& fracObj) {
     int finalnum = fracObj.numerator;
     int finalden = fracObj.denominator;
 
+    //check if fraction is able to reduce
     for(int i=9; i > 0; i--){
 
         if( finalnum%i == 0 && finalden%i == 0){

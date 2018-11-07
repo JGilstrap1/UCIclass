@@ -26,15 +26,19 @@ cout << "Fraction 2" << endl;
 f2.setNumerator();
 f2.setDenominator();
 
+//calculate addition
 f3 = f1 + f2;
 cout << f3;
 
+//calculate subtraction
 f3 = f1 - f2;
 cout << f3;
 
+//calculate product
 f3 = f1 * f2;
 cout << f3;
 
+//calculate quotient
 f3 = f1 / f2;
 cout << f3;
 

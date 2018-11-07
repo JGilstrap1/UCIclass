@@ -31,10 +31,8 @@ class fraction
         friend void operator<<(ostream& os, fraction& fracObj);
 
 	private:
-		int numerator;			// number of items in the myStack
+		int numerator;
 		int denominator;
-
-
 };
 
 #endif
