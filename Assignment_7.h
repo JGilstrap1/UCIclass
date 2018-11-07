@@ -19,10 +19,20 @@ using namespace std;
 class fraction
 {
     public:
-        fraction operator+();
+
+        void setNumerator();
+        int getNumerator();
+        void setDenominator();
+        int getDenominator();
+        fraction operator+(const fraction& fracObj);
+        fraction operator-(const fraction& fracObj);
+        fraction operator*(const fraction& fracObj);
+        fraction operator/(const fraction& fracObj);
+        friend void operator<<(ostream& os, fraction& fracObj);
+
 	private:
-		int ;			// number of items in the myStack
-		int data[];
+		int numerator;			// number of items in the myStack
+		int denominator;
 
 
 };

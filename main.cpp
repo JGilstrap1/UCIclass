@@ -16,6 +16,26 @@ using namespace std;
 
 int main () {
 
+fraction f1;
+fraction f2;
+fraction f3;
+cout << "Fraction 1" << endl;
+f1.setNumerator();
+f1.setDenominator();
+cout << "Fraction 2" << endl;
+f2.setNumerator();
+f2.setDenominator();
 
+f3 = f1 + f2;
+cout << f3;
+
+f3 = f1 - f2;
+cout << f3;
+
+f3 = f1 * f2;
+cout << f3;
+
+f3 = f1 / f2;
+cout << f3;
 
 }
