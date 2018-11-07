@@ -10,26 +10,8 @@
 
 #include <iostream>
 #include <string>
+#include "Assignment_7.h"
 
 using namespace std;
 
-#ifndef number_H
-#define number_H
-
-class Fraction {
-
-    public:
-        void getNumerator();
-        void setNumerator();
-        void getDenominator();
-        void setDenominator();
-
-    private:
-        int numeratorF1;
-        int denominatorF1;
-        int numeratorF2;
-        int denominatorF2;
-
-};
-
-#endif
+int number::getUserInput(){

@@ -13,22 +13,17 @@
 
 using namespace std;
 
-#ifndef number_H
-#define number_H
+#ifndef fraction_H
+#define fraction_H
 
-class Fraction {
-
+class fraction
+{
     public:
-        void getNumerator();
-        void setNumerator();
-        void getDenominator();
-        void setDenominator();
+        fraction operator+();
+	private:
+		int ;			// number of items in the myStack
+		int data[];
 
-    private:
-        int numeratorF1;
-        int denominatorF1;
-        int numeratorF2;
-        int denominatorF2;
 
 };
 
