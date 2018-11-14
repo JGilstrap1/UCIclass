@@ -10,23 +10,23 @@
 
 #include <iostream>
 #include <string>
-#include "Assignment_8.h"
 
 using namespace std;
 
-int main () {
+#ifndef stack_H
+#define stack_H
 
-    myStack stackObj;
+class myStack
+{
+	private:
+		int count;			// number of items in the myStack
+		int data[];
+	public:
+		myStack();
+		~myStack();
+		void push(const int item);	// push an item on the myStack
+		int pop();			// pop item off the myStack
+		int getCount() const;	// return count
+};
 
-    myStack* stackPtr = &stackObj;
-
-    int integer = 5;
-    double doublenum = 2.2;
-    string str = "string";
-    cout << "int: " << sizeof(integer) << endl;
-    cout << "double: " << sizeof(doublenum) << endl;
-    cout << "string: " << sizeof(str) << endl;
-
-
-
-}
+#endif

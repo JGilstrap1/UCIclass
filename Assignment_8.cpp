@@ -14,19 +14,40 @@
 
 using namespace std;
 
-int main () {
 
-    myStack stackObj;
+myStack::myStack()	// constructor
+{
+	count = 0;	// zero the myStack
+}
 
-    myStack* stackPtr = &stackObj;
+myStack::~myStack() {}	// destructor
 
-    int integer = 5;
-    double doublenum = 2.2;
-    string str = "string";
-    cout << "int: " << sizeof(integer) << endl;
-    cout << "double: " << sizeof(doublenum) << endl;
-    cout << "string: " << sizeof(str) << endl;
+void myStack::push(const int item)
+{
+    const int MYSTACK_SIZE = 100;
+	if (count < MYSTACK_SIZE)
+	{
+		data[count] = item;
+		++count;
+	}
+	else cout << "Overflow!\n";
+}
 
+int myStack::pop()
+{
+	if (count >0)
+	{
+		--count;
+		return (data[count]);
+	}
+	else
+	{
+		cout << "Underflow!\n";
+		return 0;
+	}
+}
 
-
+int myStack::getCount() const
+{
+	return count;
 }
