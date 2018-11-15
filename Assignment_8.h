@@ -10,18 +10,26 @@
 
 #include <iostream>
 #include <string>
-#include "Assignment_8.h"
 
 using namespace std;
 
-
-int main () {
-
-    myStack <int> intObj;
-    myStack <const char*> strObj;
-    myStack <double> dubObj;
+#ifndef stack_H
+#define stack_H
 
 
-    strObj.push("c");
+template <class S>
+class myStack{
+    S item;
+    int count;
+    public:
+        myStack(){
+            cout << "constructor" << endl;
+            myStack::count = 0;
+        };
+        void push(S item);
 
-}
+
+
+};
+
+#endif

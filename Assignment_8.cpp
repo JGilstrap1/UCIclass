@@ -14,14 +14,7 @@
 
 using namespace std;
 
-
-int main () {
-
-    myStack <int> intObj;
-    myStack <const char*> strObj;
-    myStack <double> dubObj;
-
-
-    strObj.push("c");
-
+template <class S>
+void myStack<S>::push(S item){
+    cout << item << endl;
 }
