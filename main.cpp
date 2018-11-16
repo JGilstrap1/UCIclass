@@ -14,6 +14,7 @@
 #include <string>
 #include <stdexcept>
 #define STACK_SIZE 100
+#define OVERFLOW 3
 
 using namespace std;
 
@@ -101,10 +102,10 @@ void myStack<S>::dub(myStack dubObj){
 template <class S>
 void myStack<S>::overflow(myStack intObj){
     cout << "Push: 100, 200, 300, 400" << endl;
-    intObj.push(100,3);
-    intObj.push(200,3);
-    intObj.push(300,3);
-    intObj.push(400,3);
+    intObj.push(100,OVERFLOW);
+    intObj.push(200,OVERFLOW);
+    intObj.push(300,OVERFLOW);
+    intObj.push(400,OVERFLOW);
 }
 
 template <class S>
