@@ -11,18 +11,22 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "Assignment_9.h"
 
-int main (int argc, char* argv[]) {
-    fileIO fileObj;
-    fstream fileStream;
-    string filename = argv[1];
-    cout << "Received filename \"" << filename << "\"" << endl;
-     //fileStream.open(filename, fstream::out);
-    fileObj.createFile(filename);
+using namespace std;
 
+#ifndef fileIO_H
+#define fileIO_H
 
-
+class fileIO
+{
+	private:
+        string file;
 
 
-}
+	public:
+    void createFile(string filename);
+
+
+};
+
+#endif

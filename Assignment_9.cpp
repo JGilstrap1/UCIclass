@@ -13,16 +13,19 @@
 #include <fstream>
 #include "Assignment_9.h"
 
-int main (int argc, char* argv[]) {
-    fileIO fileObj;
+using namespace std;
+
+void fileIO::createFile(string filename){
     fstream fileStream;
-    string filename = argv[1];
-    cout << "Received filename \"" << filename << "\"" << endl;
-     //fileStream.open(filename, fstream::out);
-    fileObj.createFile(filename);
-
-
-
-
-
+    fileStream.open(filename);
+     if(fileStream.fail()){
+        cout << "New file \" " << filename << "\" will be created" << endl;
+        fileStream.open(filename, fstream::out);
+     }
+     else{
+         cout << "display file content" << endl;
+     }
+     fileStream.close();
 }
+
+
