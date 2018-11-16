@@ -9,7 +9,10 @@
 //**********************************************************************************************************************************
 
 #include <iostream>
+#include <vector>
+#include <cstdlib>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
@@ -18,17 +21,19 @@ using namespace std;
 
 
 template <class S>
-class myStack{
-    S item;
-    int count;
+class myStack {
+    private:
+        vector<S> item;
+        int count;
+        S data[100];
     public:
         myStack(){
             cout << "constructor" << endl;
-            myStack::count = 0;
-        };
-        void push(S item);
-
-
+            count = 0;
+        }
+        ~myStack(){}
+        void push(S item);  // push element
+        S pop();               // pop element
 
 };
 

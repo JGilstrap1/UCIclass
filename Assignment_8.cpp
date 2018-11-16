@@ -9,12 +9,27 @@
 //**********************************************************************************************************************************
 
 #include <iostream>
+#include <vector>
+#include <cstdlib>
 #include <string>
+#include <stdexcept>
 #include "Assignment_8.h"
 
 using namespace std;
 
+
 template <class S>
-void myStack<S>::push(S item){
-    cout << item << endl;
+void myStack<S>::push (S item) {
+    const int MYSTACK_SIZE = 100;
+	if (count < MYSTACK_SIZE)
+	{
+		data[count] = item;
+		++count;
+	}
+	else cout << "Overflow!\n";
+}
+
+template <class S>
+S myStack<S>::pop () {
+
 }
