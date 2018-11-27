@@ -21,12 +21,15 @@ class fileIO
 {
 	private:
         string file;
-
+        string line;
+        string buffer;
 
 	public:
-    void createFile(string filename);
-
-
+    bool createFile(string filename);
+    void writeToFile();
+    void readFile();
+    void appendToFile();
+    void overwriteFile();
 };
 
 #endif

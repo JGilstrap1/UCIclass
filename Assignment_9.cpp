@@ -15,17 +15,62 @@
 
 using namespace std;
 
-void fileIO::createFile(string filename){
+bool fileIO::createFile(string filename){
+    file = filename;
     fstream fileStream;
     fileStream.open(filename);
-     if(fileStream.fail()){
-        cout << "New file \" " << filename << "\" will be created" << endl;
+    if(fileStream.fail()){
+        cout << "New file \"" << filename << "\" will be created" << endl;
         fileStream.open(filename, fstream::out);
-     }
-     else{
-         cout << "display file content" << endl;
-     }
-     fileStream.close();
+        fileStream.close();
+        return false;
+    }
+    else{
+        return true;
+    }
 }
 
+void fileIO::writeToFile() {
+    cout << "Enter text to be saved" << endl;
+    fstream fileStream;
+    fileStream.open(file);
+    while(getline(cin,buffer)){
+        fileStream << buffer << endl;
+    }
+    cout << "Finished writing to file, will close now" << endl;
+    cout << "New file \"" << file << "\" contains:" << endl;
+    fileStream.close();
+}
 
+void fileIO::readFile() {
+    fstream fileStream;
+    fileStream.open(file);
+    while ( getline (fileStream,line) ){
+        cout << line << '\n';
+    }
+    fileStream.close();
+}
+
+void fileIO::appendToFile() {
+    cout << "Enter text to be saved" << endl;
+    fstream fileStream;
+    fileStream.open(file,fstream::app);
+    while(getline(cin,buffer)){
+        fileStream << buffer << endl;
+    }
+    cout << "Finished writing to file, will close now" << endl;
+    cout << "New file \"" << file << "\" contains:" << endl;
+    fileStream.close();
+}
+
+void fileIO::overwriteFile() {
+    cout << "Enter text to be saved" << endl;
+    fstream fileStream;
+    fileStream.open(file, fstream::out | fstream::trunc);
+    while(getline(cin,buffer)){
+        fileStream << buffer << endl;
+    }
+    cout << "Finished writing to file, will close now" << endl;
+    cout << "File \"" << file << "\" contains:" << endl;
+    fileStream.close();
+}

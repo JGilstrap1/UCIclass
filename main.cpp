@@ -14,15 +14,40 @@
 #include "Assignment_9.h"
 
 int main (int argc, char* argv[]) {
+    bool fileExist;
     fileIO fileObj;
-    fstream fileStream;
     string filename = argv[1];
     cout << "Received filename \"" << filename << "\"" << endl;
-     //fileStream.open(filename, fstream::out);
-    fileObj.createFile(filename);
+    fileExist = fileObj.createFile(filename);
 
+    if(fileExist == true) {
+        //read file content
+        string append;
+        cout << "File \"" << filename << "\" already exists and contains:" << endl;
+        fileObj.readFile();
 
+        cout << endl << "Finished reading from file, will close now" << endl;
+        cout << "Would you like to append to the existing text (y or n)?" << endl;
+        cin >> append;
+        if (append == "y"){
+            fileObj.appendToFile();
+            fileObj.readFile();
+            return 0;
+        }
 
+        else if (append == "n"){
+            fileObj.overwriteFile();
+            fileObj.readFile();
+            return 0;
+        }
+        else{
+            cout << "Invalid Entry" << endl;
+        }
+    }
 
-
+    else{
+        //write to file
+        fileObj.writeToFile();
+        fileObj.readFile();
+    }
 }
